@@ -1,0 +1,42 @@
+using AddisEats.Api.MenuItemServices;
+using AddisEats.Api.Services.RestaurantServices;
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IMenuItemService, MenuItemService>();
+builder.Services.AddScoped<IRestaurantService,RestaurantService>();
+
+//var phonenumber=builder.Configuration.GetValue<string>{"data:content:phone"};
+//Console.WriteLine(phonenumber)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization()
+    ;
+app.UseCors("frontend");
+
+app.MapControllers();
+
+app.Run();
