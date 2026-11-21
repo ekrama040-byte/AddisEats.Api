@@ -18,7 +18,7 @@ public class RestaurantController : ControllerBase
     [HttpGet("{id}/menu")]
     public IActionResult GetByIdMenu(int id)
     {
-        var menu = _restaurantService.GetById(id);
+        var menu = _restaurantService.GetByIdMenu(id);
         if (menu == null) 
         {
             return NotFound();
