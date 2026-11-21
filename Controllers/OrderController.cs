@@ -1,0 +1,35 @@
+using AddisEats.Api.Models;
+using AddisEats.Api.DTOs;
+using Microsoft.AspNetCore.Mvc;
+using AddisEats.Api.Services.OrderServices;
+
+
+namespace AddisEats.Api.Controlle
+
+[ApiController]
+[Route("api/v1/[controller]")]
+public class OrderController : ControllerBase
+{
+    private readonly IOrderService _OrderService;
+    public OrderController(IOrderService OrderService)
+    {
+        _OrderService = OrderService;
+    }
+    [HttpGet("{id}")]
+    public IActionResult GetById(int id)
+    {
+        var result = _OrderService.GetById(id);
+        if (result == null)
+        {
+            return NotFound();
+        }
+        return Ok(result);
+    }
+    [HttpPost]
+    public IActionResult CreateOrder(CreateOrderDTO createOrder)
+    {
+        var result= _OrderService.CreateOrder(createOrder);
+        return CreatedAtAction(typeof(GetById),new{id=result.Id},result);
+
+    }
+}
