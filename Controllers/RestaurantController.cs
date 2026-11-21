@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using AddisEats.Api.Services.RestaurantServices;
 
 
+
 [ApiController]
 [Route("api/v1/[controller]")]
 public class RestaurantController : ControllerBase
