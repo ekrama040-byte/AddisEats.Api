@@ -4,15 +4,15 @@ namespace AddisEats.Api.Services.OrderServices;
 
 public class OrderService:IOrderService
 { 
-    private readonly List<Order> _orders = new();
+    private static readonly List<Order> _orders = new();
 
     public Order? GetById(int id)
     {
-        return _orders.Where(object=>object.Id == id).FirstOrDefault();
+        return _orders.Where(o =>o.Id == id).FirstOrDefault();
     }
     public Order CreateOrder(CreateOrderDTO createOrder)
     {
-        var newOrder = new Order
+        Order newOrder = new Order
         {
             Id = _orders.Count + 1,
             RestaurantId = createOrder.RestaurantId,
