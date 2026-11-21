@@ -26,7 +26,7 @@ public class OrderController : ControllerBase
         return Ok(result);
     }
     [HttpPost]
-    public IActionResult CreateOrder(CreateOrderDTO createOrder)
+    public IActionResult CreateOrder([FromBody]CreateOrderDTO createOrder)
     {
         var result= _OrderService.CreateOrder(createOrder);
         return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
