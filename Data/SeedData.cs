@@ -8,7 +8,7 @@ public class SeedData
 {
     new Restaurant
     {
-        Id = 1, Name = "Addis Ababa Restaurant", Address = "Bole", Phone = "555-1234", IsActive = true, OwnerAddress = "456 Elm St",
+        Id = 1, Name = "Addis Ababa Restaurant", Address = "Bole", Phone = "555-1234", IsActive = true, OwnerAddress = null,
         Menu = new List<MenuItem>
         {
             new MenuItem { Id = 1, Name = "Beyaynetu Special", Catagory = "Traditional", Price = 350.0m },
