@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using AddisEats.Api.Services.OrderServices;
 
 
-namespace AddisEats.Api.Controlle
+namespace AddisEats.Api.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
@@ -29,7 +29,7 @@ public class OrderController : ControllerBase
     public IActionResult CreateOrder(CreateOrderDTO createOrder)
     {
         var result= _OrderService.CreateOrder(createOrder);
-        return CreatedAtAction(typeof(GetById),new{id=result.Id},result);
+        return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
 
     }
 }
