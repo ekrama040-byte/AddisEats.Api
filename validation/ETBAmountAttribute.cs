@@ -9,7 +9,7 @@ public class ETBAmountAttribute: ValidationAttribute
     {
         if (value == null)
         {
-            return new ValidationResult.Success;
+            return  ValidationResult.Success;
         }
        
         if(value is decimal amount && amount>=0m)
