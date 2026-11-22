@@ -4,7 +4,7 @@ using  System.Text.RegularExpressions;
 namespace AddisEats.Api.Validation;
 public class EthiopianMobileAttribute: ValidationAttribute
 {
-    private static readonly Regex Pattern = new Regex(@"^(?:\+251|0)(?:\9|7)\d{8}$",RegexOptions.Compiled);
+    private static readonly Regex Pattern = new Regex(@"^(?:\+251|0)(?:9|7)\d{8}$", RegexOptions.Compiled);
     public EthiopianMobileAttribute()
     { 
         ErrorMessage= "Enter a Valid Ethiopian Mobile Number";
